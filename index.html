@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lo-modics counselor</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>lo-modics counselor</h1>
+      <div class="dots">
+        <span class="dot red"></span><span class="dot green"></span><span class="dot blue"></span><span class="dot yellow"></span>
+      </div>
+      <p class="subheading">heal yourself</p>
+    </header>
+    <main>
+      <form id="counselor-form" aria-labelledby="form-heading">
+        <h2 id="form-heading" class="sr-only">Ask the Counselor</h2>
+        <label for="user-question" class="sr-only">Ask your question:</label>
+        <textarea id="user-question" name="user-question" rows="4" placeholder="Tell me what's on your mind..."></textarea>
+        <button type="submit">Ask</button>
+      </form>
+      <div id="counselor-answer-container" role="region" aria-live="polite">
+        <p id="counselor-answer">The counselor is waiting...</p>
+      </div>
+    </main>
+    <footer>
+      <p>App Desing by Basic_Salad</p>
+    </footer>
+  </div>
+  <script type="module" src="index.tsx"></script>
+</body>
+</html>
