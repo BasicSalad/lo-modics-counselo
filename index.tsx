@@ -129,7 +129,6 @@ counselorForm.addEventListener('submit', async (e: SubmitEvent) => {
         answerDisplay.textContent = 'ok, why dont we start again';
         submitButton.disabled = false;
         whyCounter = 0; // Reset counter
-        userInput.focus();
       }, 5000);
       return; // Exit the normal flow
     }
@@ -156,7 +155,6 @@ counselorForm.addEventListener('submit', async (e: SubmitEvent) => {
     answerDisplay.innerHTML = styledResponse;
     
     submitButton.disabled = false;
-    userInput.focus();
   }, 3000);
 
   userInput.value = '';

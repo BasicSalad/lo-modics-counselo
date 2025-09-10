@@ -251,7 +251,7 @@ p#counselor-answer.angry-text {
 /* Footer Styling */
 footer {
   margin-top: auto;
-  padding-top: 1rem;
+  padding-top: 0;
   border-top: 1px solid #e0e0e0;
 }
 
@@ -260,6 +260,7 @@ footer p {
   color: #888;
   text-align: center;
   margin: 0;
+  padding-top: 0.25rem;
 }
 
 /* --- Mobile Streamlining --- */
@@ -306,6 +307,6 @@ footer p {
   }
 
   footer {
-    padding-top: 0.5rem;
+    padding-top: 0;
   }
 }
