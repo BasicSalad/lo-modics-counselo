@@ -7,6 +7,7 @@ const submitButton = counselorForm.querySelector('button[type="submit"]') as HTM
 
 let whyCounter = 0;
 const dotColors = ['red', 'green', 'blue', 'yellow'];
+let isAudioInitialized = false;
 
 // --- Tone.js Music Setup ---
 // This creates a gentle, ambient synth sound.
@@ -87,33 +88,19 @@ const getRandomResponse = (): string => {
   return responses[randomIndex];
 };
 
-// --- Music Handling ---
-// This function will start the generative music on the first user interaction.
-const playMusicOnInteraction = async () => {
-  // Audio context needs to be started by a user gesture.
-  if (Tone.context.state !== 'running') {
-      await Tone.start();
-  }
-
-  // Start the music if it's not already playing.
-  if (Tone.Transport.state !== 'started') {
-      Tone.Transport.start();
-      musicPart.start(0);
-  }
-  
-  // Once it has run, remove the listeners to avoid re-triggering.
-  document.removeEventListener('click', playMusicOnInteraction);
-  document.removeEventListener('keydown', playMusicOnInteraction);
-};
-
-// Add listeners for the first user interaction.
-document.addEventListener('click', playMusicOnInteraction);
-document.addEventListener('keydown', playMusicOnInteraction);
-// --- End Music Handling ---
-
-
-counselorForm.addEventListener('submit', (e: SubmitEvent) => {
+counselorForm.addEventListener('submit', async (e: SubmitEvent) => {
   e.preventDefault();
+
+  // --- Start Audio on First Meaningful Interaction ---
+  if (!isAudioInitialized) {
+    // Audio context must be started by a user gesture.
+    await Tone.start();
+    if (Tone.Transport.state !== 'started') {
+        Tone.Transport.start();
+        musicPart.start(0);
+    }
+    isAudioInitialized = true;
+  }
 
   const question = userInput.value.trim().toLowerCase();
 
