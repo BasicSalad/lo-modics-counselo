@@ -100,6 +100,7 @@ counselorForm.addEventListener('submit', async (e: SubmitEvent) => {
         musicPart.start(0);
     }
     isAudioInitialized = true;
+    userInput.placeholder = "Go on...";
   }
 
   const question = userInput.value.trim().toLowerCase();
